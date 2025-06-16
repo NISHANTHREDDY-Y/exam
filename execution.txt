@@ -1,0 +1,16 @@
+parser
+
+bison -y -d parser.y
+gcc -o parser y.tab.c -ll
+./parser
+Enter expression: (a+b)*c
+
+
+expr
+
+bison -y -d expr.y
+gcc -o expr y.tab.c -lm
+./expr
+Enter expression: 4+5*(2-1)
+✅ Result: 4.000000
+
