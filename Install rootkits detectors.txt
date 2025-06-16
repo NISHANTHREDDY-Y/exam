@@ -1,0 +1,45 @@
+Install rootkits detectors and study variety of options
+RootKits
+1.Rootkits are special type of malware gives the root level access to the attacker.
+2.Wrapper and cloak for other code.
+3.Not necessarily malicious.
+4.Insidiously cloaked.
+5.Quiet behaviour.
+6.Can be installed by unprivileged user.
+7.Nearly impossible to detect and remove.
+
+Infecting the target with rootkits
+1.Determine what code you want to hide(payload).
+2.Develop or buy a rootkit packager.
+3.Wrap the payload with the packager.
+4.Distribute the rootkit to the target.
+5.Spyware is a broad category of software.
+6.Monitors users and network activity.
+7.Reports back to source.
+
+to List the latest rootkit checkers or antiviruses available for linux and windows
+
+Rkhunter and chkrootkit are used to check any rootkits installed in kali linux. To get rkhunter tool, type the following command
+
+        sudo su
+        Enter the password for kali
+        apt-get install rkhunter
+        It will install the rkhunter in kali
+
+It will scan the kali for any root kits installed.
+
+Using chkrootkit
+
+        sudo su
+        Enter the password for kali
+        apt-get install chkrootkit
+        It will install the chkrootkit in kali
+        chkrootkit -h
+        It will give the options for chkrootkit
+
+To scan the system just type as follows
+
+        chkrootkit
+
+ *) It will scan the kali for any root kits installed
+
