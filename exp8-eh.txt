@@ -1,0 +1,60 @@
+
+AGENT
+
+Port Scanning & Session Hijacking with Nmap & Burp Suite
+🛠 Tools:
+Nmap – Network scanner
+
+Burp Suite – Web proxy tool
+
+🔍 Part 1: Nmap Port Scanning
+Install Nmap (if not already):
+
+bash
+Copy
+Edit
+sudo apt install nmap
+Scan a target using TCP SYN scan:
+
+bash
+Copy
+Edit
+nmap -sS <target IP>
+Examples of scans:
+
+-sS: stealth scan
+
+-sT: full TCP scan
+
+-A: aggressive scan (OS detection, etc.)
+
+📌 Use Case: Find open ports and running services
+
+🔍 Part 2: Burp Suite for Intercepting Web Traffic
+
+    Install Burp Suite
+    Download from: https://portswigger.net/burp/communitydownload
+
+Install and run it.
+
+    Configure Firefox to use Burp Proxy
+    Go to about:preferences → Network Settings → Manual Proxy
+
+HTTP Proxy: 127.0.0.1, Port: 8080
+
+Check “Use this proxy for all protocols”
+
+    Import Burp Certificate
+    Go to http://burp in Firefox
+
+Download CA Certificate
+
+Import in Firefox > Settings > Certificates > Authorities > Import
+
+    Intercept Requests
+    In Burp → Proxy → Intercept → Turn ON
+
+Open any website in Firefox → Burp will capture request
+
+📌 Use Burp to see all request headers, cookies, etc.
+
