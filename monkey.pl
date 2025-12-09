@@ -24,3 +24,6 @@ solve(State, []) :- goal(State).
 solve(State, [A|Rest]) :-
     action(A, State, S2),
     solve(S2, Rest).
+
+
+?- initial(I), solve(I, Plan).
