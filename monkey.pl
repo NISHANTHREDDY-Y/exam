@@ -1,25 +1,26 @@
-:- set_prolog_flag(answer_write_options, [max_depth(0)]).
-
+% initial and goal states
 initial(state(left, floor, right, no)).
-initial(state(left,floor,right,no)).
-goal(state(_,_,_,yes)).
+goal(state(_, _, _, yes)).
 
-action(move(X,Y),  state(X,floor,B,H),   state(Y,floor,B,H)).
-action(push(X,Y),  state(X,floor,X,H),   state(Y,floor,Y,H)).
-action(climb,      state(X,floor,X,H),   state(X,onbox,X,H)).
-action(grasp,      state(middle,onbox,middle,no), 
-                    state(middle,onbox,middle,yes)).
+% actions
+action(move(X,Y),
+       state(X, floor, B, H),
+       state(Y, floor, B, H)).
 
-solve(Plan) :- initial(S), dfs(S, [], Plan), write(Plan).
+action(push(X,Y),
+       state(X, floor, X, H),
+       state(Y, floor, Y, H)).
 
-dfs(S, _, []) :- goal(S).
-dfs(S, V, [A|R]) :-
-    action(A, S, S2),
-    \+ member(S2, V),
-    dfs(S2, [S|V], R).
+action(climb,
+       state(X, floor, X, H),
+       state(X, onbox, X, H)).
 
+action(grasp,
+       state(middle, onbox, middle, no),
+       state(middle, onbox, middle, yes)).
 
-run:
-
-?- solve(Plan).
-% Plan = [move(left,right), push(right,middle), climb, grasp]
+% solver
+solve(State, []) :- goal(State).
+solve(State, [A|Rest]) :-
+    action(A, State, S2),
+    solve(S2, Rest).
